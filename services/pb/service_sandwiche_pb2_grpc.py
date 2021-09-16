@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import pb.service_pb2 as service__pb2
+import pb.service_sandwiche_pb2 as service__sandwiche__pb2
 
 
 class SandwicheServiceStub(object):
@@ -16,8 +16,8 @@ class SandwicheServiceStub(object):
         """
         self.FindSandwiches = channel.unary_unary(
                 '/service.SandwicheService/FindSandwiches',
-                request_serializer=service__pb2.FindSandwichesRequest.SerializeToString,
-                response_deserializer=service__pb2.FindSandwichesResponse.FromString,
+                request_serializer=service__sandwiche__pb2.FindSandwichesRequest.SerializeToString,
+                response_deserializer=service__sandwiche__pb2.FindSandwichesResponse.FromString,
                 )
 
 
@@ -35,8 +35,8 @@ def add_SandwicheServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'FindSandwiches': grpc.unary_unary_rpc_method_handler(
                     servicer.FindSandwiches,
-                    request_deserializer=service__pb2.FindSandwichesRequest.FromString,
-                    response_serializer=service__pb2.FindSandwichesResponse.SerializeToString,
+                    request_deserializer=service__sandwiche__pb2.FindSandwichesRequest.FromString,
+                    response_serializer=service__sandwiche__pb2.FindSandwichesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -60,7 +60,7 @@ class SandwicheService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/service.SandwicheService/FindSandwiches',
-            service__pb2.FindSandwichesRequest.SerializeToString,
-            service__pb2.FindSandwichesResponse.FromString,
+            service__sandwiche__pb2.FindSandwichesRequest.SerializeToString,
+            service__sandwiche__pb2.FindSandwichesResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -5,7 +5,7 @@ import json
 import pb.gateway_pb2 as gateway
 import pb.gateway_pb2_grpc as gatewayGRPC
 
-with grpc.insecure_channel('localhost:5001') as channel:
+with grpc.insecure_channel('localhost:5000') as channel:
     stub = gatewayGRPC.ServerStub(channel)
     request = gateway.MenuRequest(tableNumber = 9)
     response = stub.GetMenu(request)
