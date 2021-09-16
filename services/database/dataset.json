@@ -2,56 +2,58 @@
     "sandwiches": [
         {
             "id": "",
-            "name": "",
-            "price": "",
-            "ingredients": []
-        },
-        {
-            "id": "",
             "name": "ANITTA",
             "price": 20.00,
+            "preparationTime": 240, 
             "ingredients": ["P\\u00e3o m\\u00f4naco com gergelim", " alface americana", "cebola roxa em fatias", " tomate", " molho t\\u00e1rtaro", " blend 150 gramas frango com bacon", " mussarela", " molho mostarda e mel e cebola crispy"]
         },
         {
             "id": "",
             "name": "SNOOP DOGG",
             "price": 20.00,
+            "preparationTime": 240, 
             "ingredients": ["P\\u00e3o australiano", " cebola caramelizada", " bacon", " burger 150g", " queijo cheddar", " molho barbecue"]
         },
         {
             "id": "",
             "name": "CHARLIE BROWN JR",
             "price": 20.00,
+            "preparationTime": 240, 
             "ingredients": ["\\nP\\u00e3o brioche", " alface americana", " molho especial groove", " bacon", " buguer 150g", " queijo mussarela e cebola crispy\\n"]
         },
         {
             "id": "",
             "name": "CHARLIE BROWN JR DUPLO",
             "price": 24.00,
+            "preparationTime": 240, 
             "ingredients": ["\\nP\\u00e3o brioche", " alface americana", " molho especial groove", " bacon", " 2 hamb\\u00fargueres de 150 gramas", " duplo queijo mussarela e cebola crispy"]
         },
         {
             "id": "",
             "name": "CHICLETE COM BANANA DUPLO",
             "price": 32.00,
+            "preparationTime": 240, 
             "ingredients": ["\\nP\\u00e3o Brioche", " Alface americana", " Maionese defumada", " Bacon ", "2 Blends de 150 gramas", " Dobro de Queijo Provolone e Dobro de Banana frita empanada"]
         },
         {
             "id": "",
             "name": "GUSTTAVO LIMA",
             "price": 24.00,
+            "preparationTime": 240, 
             "ingredients": ["\\nP\\u00e3o Brioche", " Alface americana", " Creme 4 queijos", " Bacon", " Molho Barbecue", " Blend de Cupim 150 gramas", " Queijo Mussarela", " Molho groove Alho e Cebola crispy"]
         },
         {
             "id": "",
             "name": "LÉO SANTANA",
             "price": 27.00,
+            "preparationTime": 240, 
             "ingredients": ["\\nP\\u00e3o m\\u00f4naco com gergelim", " alface americana", " cebola roxa em fatias", " molho especial uai groove", " 3 blends de 90 gramas", " mussarela e bacon fatiado"]
         },
         {
             "id": "",
             "name": "NATIRUTS",
             "price": 34.00,
+            "preparationTime": 240, 
             "ingredients": ["\\nP\\u00e3o brioche", " Blend Futuro Burguer 115 gramas (vegetariano)", " Cream Cheese com Alho Por\\u00f3", " Alface Americana", " Tomate Seco", " Mussarela e Maionese Defumada"]
         }
     ],

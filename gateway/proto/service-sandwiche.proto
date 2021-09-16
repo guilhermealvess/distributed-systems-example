@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package service;
+
+message Sandwiche {
+    string id = 1;
+    string name = 2;
+    double price = 3;
+    int64 preparationTime = 4;
+    repeated string ingredients = 5;
+}
+
+message FindSandwichesResponse {
+    repeated Sandwiche sandwiches = 1;
+}
+
+message FindSandwichesRequest {
+    int32 tableNumber = 1;
+}
+
+service SandwicheService {
+    rpc FindSandwiches (FindSandwichesRequest) returns (FindSandwichesResponse) {}
+}

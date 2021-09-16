@@ -15,17 +15,17 @@ class ServerStub(object):
             channel: A grpc.Channel.
         """
         self.GetMenu = channel.unary_unary(
-                '/client.Server/GetMenu',
+                '/gateway.Server/GetMenu',
                 request_serializer=gateway__pb2.MenuRequest.SerializeToString,
                 response_deserializer=gateway__pb2.MenuRepply.FromString,
                 )
         self.CreateOrder = channel.unary_unary(
-                '/client.Server/CreateOrder',
+                '/gateway.Server/CreateOrder',
                 request_serializer=gateway__pb2.OrderRequest.SerializeToString,
                 response_deserializer=gateway__pb2.OrderResponse.FromString,
                 )
         self.CloseAccount = channel.unary_unary(
-                '/client.Server/CloseAccount',
+                '/gateway.Server/CloseAccount',
                 request_serializer=gateway__pb2.CloseAccountRequest.SerializeToString,
                 response_deserializer=gateway__pb2.CloseAccountResponse.FromString,
                 )
@@ -72,7 +72,7 @@ def add_ServerServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'client.Server', rpc_method_handlers)
+            'gateway.Server', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -91,7 +91,7 @@ class Server(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/client.Server/GetMenu',
+        return grpc.experimental.unary_unary(request, target, '/gateway.Server/GetMenu',
             gateway__pb2.MenuRequest.SerializeToString,
             gateway__pb2.MenuRepply.FromString,
             options, channel_credentials,
@@ -108,7 +108,7 @@ class Server(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/client.Server/CreateOrder',
+        return grpc.experimental.unary_unary(request, target, '/gateway.Server/CreateOrder',
             gateway__pb2.OrderRequest.SerializeToString,
             gateway__pb2.OrderResponse.FromString,
             options, channel_credentials,
@@ -125,7 +125,7 @@ class Server(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/client.Server/CloseAccount',
+        return grpc.experimental.unary_unary(request, target, '/gateway.Server/CloseAccount',
             gateway__pb2.CloseAccountRequest.SerializeToString,
             gateway__pb2.CloseAccountResponse.FromString,
             options, channel_credentials,
