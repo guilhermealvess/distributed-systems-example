@@ -1,0 +1,153 @@
+{
+    "sandwiches": [
+        {
+            "id": "",
+            "name": "",
+            "price": "",
+            "ingredients": []
+        },
+        {
+            "id": "",
+            "name": "ANITTA",
+            "price": 20.00,
+            "ingredients": ["P\\u00e3o m\\u00f4naco com gergelim", " alface americana", "cebola roxa em fatias", " tomate", " molho t\\u00e1rtaro", " blend 150 gramas frango com bacon", " mussarela", " molho mostarda e mel e cebola crispy"]
+        },
+        {
+            "id": "",
+            "name": "SNOOP DOGG",
+            "price": 20.00,
+            "ingredients": ["P\\u00e3o australiano", " cebola caramelizada", " bacon", " burger 150g", " queijo cheddar", " molho barbecue"]
+        },
+        {
+            "id": "",
+            "name": "CHARLIE BROWN JR",
+            "price": 20.00,
+            "ingredients": ["\\nP\\u00e3o brioche", " alface americana", " molho especial groove", " bacon", " buguer 150g", " queijo mussarela e cebola crispy\\n"]
+        },
+        {
+            "id": "",
+            "name": "CHARLIE BROWN JR DUPLO",
+            "price": 24.00,
+            "ingredients": ["\\nP\\u00e3o brioche", " alface americana", " molho especial groove", " bacon", " 2 hamb\\u00fargueres de 150 gramas", " duplo queijo mussarela e cebola crispy"]
+        },
+        {
+            "id": "",
+            "name": "CHICLETE COM BANANA DUPLO",
+            "price": 32.00,
+            "ingredients": ["\\nP\\u00e3o Brioche", " Alface americana", " Maionese defumada", " Bacon ", "2 Blends de 150 gramas", " Dobro de Queijo Provolone e Dobro de Banana frita empanada"]
+        },
+        {
+            "id": "",
+            "name": "GUSTTAVO LIMA",
+            "price": 24.00,
+            "ingredients": ["\\nP\\u00e3o Brioche", " Alface americana", " Creme 4 queijos", " Bacon", " Molho Barbecue", " Blend de Cupim 150 gramas", " Queijo Mussarela", " Molho groove Alho e Cebola crispy"]
+        },
+        {
+            "id": "",
+            "name": "LÉO SANTANA",
+            "price": 27.00,
+            "ingredients": ["\\nP\\u00e3o m\\u00f4naco com gergelim", " alface americana", " cebola roxa em fatias", " molho especial uai groove", " 3 blends de 90 gramas", " mussarela e bacon fatiado"]
+        },
+        {
+            "id": "",
+            "name": "NATIRUTS",
+            "price": 34.00,
+            "ingredients": ["\\nP\\u00e3o brioche", " Blend Futuro Burguer 115 gramas (vegetariano)", " Cream Cheese com Alho Por\\u00f3", " Alface Americana", " Tomate Seco", " Mussarela e Maionese Defumada"]
+        }
+    ],
+    "dishMade": [
+        {
+            "id": "",
+            "name": "CONTRA FILÉ ACEBOLADO ( 2 BIFES)",
+            "price": 22.00,
+            "ingredients": ["\\nMontado com arroz branco", " feij\\u00e3o em caldo", " contra fil\\u00e9 acebolado", " batata chips e ovo frito."]
+        },
+        {
+            "id": "",
+            "name": "PARMEGIANA DE FILÉ MIGNON",
+            "price": 21.00,
+            "ingredients": ["Montado com arroz branco", " parmegiana de fil\\u00e9 mignon", " batata chips e salada de alface e tomate."]
+        },
+        {
+            "id": "",
+            "name": "MARMITEX/ MÉDIO",
+            "price": 18.00,
+            "ingredients": ["Montado com arroz e feijão", "2 opções de carne e 4 guarnições."]
+        },
+        {
+            "id": "",
+            "name": "MARMITEX/ PEQUENO",
+            "price": 14.50,
+            "ingredients": ["Montado com arroz e feijão", "1 opções de carne e 4 guarnições."]
+        }
+    ],
+    "drinks": [
+        {
+            "id": "",
+            "name": "Coca Cola 220ml",
+            "price": 3.00
+        },
+        {
+            "id": "",
+            "name": "Coca Cola 1,5L",
+            "price": 8.5
+        },
+        {
+            "id": "",
+            "name": "Água mineral s/ gás",
+            "price": 3.00
+        },
+        {
+            "id": "",
+            "name": "GUARANÁ ANTARCTICA - LATA",
+            "price": 6.90
+        },
+        {
+            "id": "",
+            "name": "SUKITA LARANJA LATA",
+            "price": 6.90
+        },
+        {
+            "id": "",
+            "name": "GUARANÁ ANTARCTICA ZERO - 2 LITROS",
+            "price": 9.90
+        },
+        {
+            "id": "",
+            "name": "SCHWEPPES CITRUS",
+            "price": 6.9
+        },
+        {
+            "id": "",
+            "name": "COLORADO APPIA 600 ML",
+            "price": 23.00
+        }    
+    ],
+    "dessert": [
+        {
+            "id": "",
+            "name": "MCFLURRY KITKAT COM CALDA DE CARAMELO",
+            "price": 11.90
+        },
+        {
+            "id": "",
+            "name": "MCFLURRY KITKAT COM CALDA DE CHOCOLATE",
+            "price": 11.90
+        },
+        {
+            "id": "",
+            "name": "MCFLURRY KITKAT COM CALDA DE MORANGO",
+            "price": 11.90
+        },
+        {
+            "id": "",
+            "name": "MCSHAKE KOPENHAGEN CHOCOLATE 400ML",
+            "price": 12.90
+        },
+        {
+            "id": "",
+            "name": "MCSHAKE MORANGO 400ML",
+            "price": 12.90
+        }
+    ]
+}
