@@ -3,8 +3,7 @@ from google.protobuf.json_format import MessageToJson
 import json
 from pprint import pprint
 
-import pb.gateway_pb2
-import pb.gateway_pb2_grpc
+import pb.gateway_pb2, pb.gateway_pb2_grpc
 
 
 with grpc.insecure_channel('localhost:5000') as channel:

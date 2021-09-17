@@ -4,7 +4,7 @@ package gateway;
 
 //import "google/protobuf/empty.proto";
 
-message MenuRepply {
+message MenuResponse {
     repeated Sandwiche sandwiches = 1;
     repeated DishMade dishMades = 2;
     repeated Drink drinks = 3;
@@ -63,7 +63,7 @@ message CloseAccountResponse {
 }
 
 service Server {
-    rpc GetMenu (MenuRequest) returns (MenuRepply) {}
+    rpc GetMenu (MenuRequest) returns (MenuResponse) {}
 
     rpc CreateOrder (OrderRequest) returns (OrderResponse) {}
 

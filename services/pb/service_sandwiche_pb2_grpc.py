@@ -15,7 +15,7 @@ class SandwicheServiceStub(object):
             channel: A grpc.Channel.
         """
         self.FindSandwiches = channel.unary_unary(
-                '/service.SandwicheService/FindSandwiches',
+                '/sandwicheService.SandwicheService/FindSandwiches',
                 request_serializer=service__sandwiche__pb2.FindSandwichesRequest.SerializeToString,
                 response_deserializer=service__sandwiche__pb2.FindSandwichesResponse.FromString,
                 )
@@ -40,7 +40,7 @@ def add_SandwicheServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'service.SandwicheService', rpc_method_handlers)
+            'sandwicheService.SandwicheService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -59,7 +59,7 @@ class SandwicheService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/service.SandwicheService/FindSandwiches',
+        return grpc.experimental.unary_unary(request, target, '/sandwicheService.SandwicheService/FindSandwiches',
             service__sandwiche__pb2.FindSandwichesRequest.SerializeToString,
             service__sandwiche__pb2.FindSandwichesResponse.FromString,
             options, channel_credentials,

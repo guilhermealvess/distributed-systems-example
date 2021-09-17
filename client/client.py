@@ -3,15 +3,15 @@ import grpc
 from google.protobuf.json_format import MessageToJson
 import json
 
-import pb.gateway_pb2 as gateway
-import pb.gateway_pb2_grpc as gatewayGRPC
+import pb.gateway_pb2, pb.gateway_pb2_grpc
+
 
 table_number = randint(1, 10)
 CATEGORY = {
     'sandwiches': 'SANDUICHES',
-    'dishMade': 'PRATOS FEITOS',
-    'drink': 'BEBIDAS',
-    'dessert': 'SOBREMESAS'
+    'dishMades': 'PRATOS FEITOS',
+    'drinks': 'BEBIDAS',
+    'desserts': 'SOBREMESAS'
 }
 
 print('Seja Bem vindo ao restaurante FOOD BAR!\nEstá é a mesa ' + str(table_number) + '\n')
@@ -49,12 +49,15 @@ def selected_items_from_menu(menu:dict):
                 print('[ {} ] {} - {}'.format(cod, food['name'], converter_to_price_str(food['price'])))
                 cod += 1
 
-                ingredients_str = ''
-                for index in range(len(food['ingredients'])):
-                    ingredients_str += food['ingredients'][index]
-                    if index != len(food['ingredients']) -1:
-                        ingredients_str += ', '
-                print(ingredients_str + '.\n')
+                if food.get('ingredients'):
+                    ingredients_str = ''
+                    for index in range(len(food['ingredients'])):
+                        ingredients_str += food['ingredients'][index]
+                        if index != len(food['ingredients']) -1:
+                            ingredients_str += ', '
+                    print(ingredients_str + '.\n')
+                else:
+                    print('\n')
 
     print('\n[ OK ]\n')
     while True:
@@ -85,8 +88,8 @@ def get_menu():
         "dessert": []
     } """
     with grpc.insecure_channel('localhost:5000') as channel:
-        stub = gatewayGRPC.ServerStub(channel)
-        request = gateway.MenuRequest(tableNumber = table_number)
+        stub = pb.gateway_pb2_grpc.ServerStub(channel)
+        request = pb.gateway_pb2.MenuRequest(tableNumber = table_number)
         response = stub.GetMenu(request)
         json_obj = json.loads(MessageToJson(response))
         return json_obj

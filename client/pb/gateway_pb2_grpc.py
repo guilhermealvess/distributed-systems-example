@@ -17,7 +17,7 @@ class ServerStub(object):
         self.GetMenu = channel.unary_unary(
                 '/gateway.Server/GetMenu',
                 request_serializer=gateway__pb2.MenuRequest.SerializeToString,
-                response_deserializer=gateway__pb2.MenuRepply.FromString,
+                response_deserializer=gateway__pb2.MenuResponse.FromString,
                 )
         self.CreateOrder = channel.unary_unary(
                 '/gateway.Server/CreateOrder',
@@ -58,7 +58,7 @@ def add_ServerServicer_to_server(servicer, server):
             'GetMenu': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMenu,
                     request_deserializer=gateway__pb2.MenuRequest.FromString,
-                    response_serializer=gateway__pb2.MenuRepply.SerializeToString,
+                    response_serializer=gateway__pb2.MenuResponse.SerializeToString,
             ),
             'CreateOrder': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateOrder,
@@ -93,7 +93,7 @@ class Server(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/gateway.Server/GetMenu',
             gateway__pb2.MenuRequest.SerializeToString,
-            gateway__pb2.MenuRepply.FromString,
+            gateway__pb2.MenuResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
