@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\rgateway.proto\x12\x07gateway\"\xa0\x01\n\x0cMenuResponse\x12&\n\nsandwiches\x18\x01 \x03(\x0b\x32\x12.gateway.Sandwiche\x12$\n\tdishMades\x18\x02 \x03(\x0b\x32\x11.gateway.DishMade\x12\x1e\n\x06\x64rinks\x18\x03 \x03(\x0b\x32\x0e.gateway.Drink\x12\"\n\x08\x64\x65sserts\x18\x04 \x03(\x0b\x32\x10.gateway.Dessert\"\"\n\x0bMenuRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\"b\n\tSandwiche\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\x12\x17\n\x0fpreparationTime\x18\x04 \x01(\x03\x12\x13\n\x0bingredients\x18\x05 \x03(\t\"a\n\x08\x44ishMade\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\x12\x17\n\x0fpreparationTime\x18\x04 \x01(\x03\x12\x13\n\x0bingredients\x18\x05 \x03(\t\"0\n\x05\x44rink\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\"2\n\x07\x44\x65ssert\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\"/\n\x0cOrderRequest\x12\n\n\x02id\x18\x01 \x03(\t\x12\x13\n\x0btableNumber\x18\x02 \x01(\x05\"F\n\rOrderResponse\x12\r\n\x05total\x18\x01 \x01(\x01\x12\x17\n\x0fpreparationTime\x18\x02 \x01(\x03\x12\r\n\x05\x66oods\x18\x03 \x03(\t\"*\n\x13\x43loseAccountRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\"%\n\x14\x43loseAccountResponse\x12\r\n\x05total\x18\x01 \x01(\x05\x32\xd1\x01\n\x06Server\x12\x38\n\x07GetMenu\x12\x14.gateway.MenuRequest\x1a\x15.gateway.MenuResponse\"\x00\x12>\n\x0b\x43reateOrder\x12\x15.gateway.OrderRequest\x1a\x16.gateway.OrderResponse\"\x00\x12M\n\x0c\x43loseAccount\x12\x1c.gateway.CloseAccountRequest\x1a\x1d.gateway.CloseAccountResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\rgateway.proto\x12\x07gateway\"\xa0\x01\n\x0cMenuResponse\x12&\n\nsandwiches\x18\x01 \x03(\x0b\x32\x12.gateway.Sandwiche\x12$\n\tdishMades\x18\x02 \x03(\x0b\x32\x11.gateway.DishMade\x12\x1e\n\x06\x64rinks\x18\x03 \x03(\x0b\x32\x0e.gateway.Drink\x12\"\n\x08\x64\x65sserts\x18\x04 \x03(\x0b\x32\x10.gateway.Dessert\"\"\n\x0bMenuRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\"I\n\tSandwiche\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\x12\x13\n\x0bingredients\x18\x04 \x03(\t\"H\n\x08\x44ishMade\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\x12\x13\n\x0bingredients\x18\x04 \x03(\t\"0\n\x05\x44rink\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\"2\n\x07\x44\x65ssert\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\"/\n\x0cOrderRequest\x12\n\n\x02id\x18\x01 \x03(\t\x12\x13\n\x0btableNumber\x18\x02 \x01(\x05\"F\n\rOrderResponse\x12\r\n\x05total\x18\x01 \x01(\x01\x12\x17\n\x0fpreparationTime\x18\x02 \x01(\x03\x12\r\n\x05\x66oods\x18\x03 \x03(\t\"*\n\x13\x43loseAccountRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\"%\n\x14\x43loseAccountResponse\x12\r\n\x05total\x18\x01 \x01(\x05\x32\xd1\x01\n\x06Server\x12\x38\n\x07GetMenu\x12\x14.gateway.MenuRequest\x1a\x15.gateway.MenuResponse\"\x00\x12>\n\x0b\x43reateOrder\x12\x15.gateway.OrderRequest\x1a\x16.gateway.OrderResponse\"\x00\x12M\n\x0c\x43loseAccount\x12\x1c.gateway.CloseAccountRequest\x1a\x1d.gateway.CloseAccountResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -140,15 +140,8 @@ _SANDWICHE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='preparationTime', full_name='gateway.Sandwiche.preparationTime', index=3,
-      number=4, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ingredients', full_name='gateway.Sandwiche.ingredients', index=4,
-      number=5, type=9, cpp_type=9, label=3,
+      name='ingredients', full_name='gateway.Sandwiche.ingredients', index=3,
+      number=4, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -166,7 +159,7 @@ _SANDWICHE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=225,
-  serialized_end=323,
+  serialized_end=298,
 )
 
 
@@ -200,15 +193,8 @@ _DISHMADE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='preparationTime', full_name='gateway.DishMade.preparationTime', index=3,
-      number=4, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ingredients', full_name='gateway.DishMade.ingredients', index=4,
-      number=5, type=9, cpp_type=9, label=3,
+      name='ingredients', full_name='gateway.DishMade.ingredients', index=3,
+      number=4, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -225,8 +211,8 @@ _DISHMADE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=325,
-  serialized_end=422,
+  serialized_start=300,
+  serialized_end=372,
 )
 
 
@@ -271,8 +257,8 @@ _DRINK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=424,
-  serialized_end=472,
+  serialized_start=374,
+  serialized_end=422,
 )
 
 
@@ -317,8 +303,8 @@ _DESSERT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=474,
-  serialized_end=524,
+  serialized_start=424,
+  serialized_end=474,
 )
 
 
@@ -356,8 +342,8 @@ _ORDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=526,
-  serialized_end=573,
+  serialized_start=476,
+  serialized_end=523,
 )
 
 
@@ -402,8 +388,8 @@ _ORDERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=575,
-  serialized_end=645,
+  serialized_start=525,
+  serialized_end=595,
 )
 
 
@@ -434,8 +420,8 @@ _CLOSEACCOUNTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=647,
-  serialized_end=689,
+  serialized_start=597,
+  serialized_end=639,
 )
 
 
@@ -466,8 +452,8 @@ _CLOSEACCOUNTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=691,
-  serialized_end=728,
+  serialized_start=641,
+  serialized_end=678,
 )
 
 _MENURESPONSE.fields_by_name['sandwiches'].message_type = _SANDWICHE
@@ -565,8 +551,8 @@ _SERVER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=731,
-  serialized_end=940,
+  serialized_start=681,
+  serialized_end=890,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetMenu',

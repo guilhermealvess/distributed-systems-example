@@ -9,17 +9,17 @@ from database.database import Database
 
 class DishMadeService:
     def findDishMade(self):
-        return Database().findAll('dishMades')
+        return Database().findAll('dishMade')
 
 
 class DishMadeServer(pb.service_dish_made_pb2_grpc.DishMadeServiceServicer):
     def FindDishMades(self, request, context):
         dishMades = DishMadeService().findDishMade()
+        print(dishMades)
         response = list(map(lambda d: pb.service_dish_made_pb2.DishMade(
             id=str(d['_id']),
             name=d['name'],
-            price=d['name'],
-            preparationTime=d['preparationTime'],
+            price=d['price'],
             ingredients=d['ingredients']
         ), dishMades))
         return pb.service_dish_made_pb2.FindDishMadeResponse(dishMades=response)

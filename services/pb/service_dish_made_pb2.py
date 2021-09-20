@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x17service-dish-made.proto\x12\x0f\x64ishMadeService\"a\n\x08\x44ishMade\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\x12\x17\n\x0fpreparationTime\x18\x04 \x01(\x03\x12\x13\n\x0bingredients\x18\x05 \x03(\t\"D\n\x14\x46indDishMadeResponse\x12,\n\tdishMades\x18\x01 \x03(\x0b\x32\x19.dishMadeService.DishMade\"*\n\x13\x46indDishMadeRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\x32q\n\x0f\x44ishMadeService\x12^\n\rFindDishMades\x12$.dishMadeService.FindDishMadeRequest\x1a%.dishMadeService.FindDishMadeResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x17service-dish-made.proto\x12\x0f\x64ishMadeService\"H\n\x08\x44ishMade\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\x12\x13\n\x0bingredients\x18\x04 \x03(\t\"D\n\x14\x46indDishMadeResponse\x12,\n\tdishMades\x18\x01 \x03(\x0b\x32\x19.dishMadeService.DishMade\"*\n\x13\x46indDishMadeRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\x32q\n\x0f\x44ishMadeService\x12^\n\rFindDishMades\x12$.dishMadeService.FindDishMadeRequest\x1a%.dishMadeService.FindDishMadeResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -55,15 +55,8 @@ _DISHMADE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='preparationTime', full_name='dishMadeService.DishMade.preparationTime', index=3,
-      number=4, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ingredients', full_name='dishMadeService.DishMade.ingredients', index=4,
-      number=5, type=9, cpp_type=9, label=3,
+      name='ingredients', full_name='dishMadeService.DishMade.ingredients', index=3,
+      number=4, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -81,7 +74,7 @@ _DISHMADE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=44,
-  serialized_end=141,
+  serialized_end=116,
 )
 
 
@@ -112,8 +105,8 @@ _FINDDISHMADERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=143,
-  serialized_end=211,
+  serialized_start=118,
+  serialized_end=186,
 )
 
 
@@ -144,8 +137,8 @@ _FINDDISHMADEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=213,
-  serialized_end=255,
+  serialized_start=188,
+  serialized_end=230,
 )
 
 _FINDDISHMADERESPONSE.fields_by_name['dishMades'].message_type = _DISHMADE
@@ -184,8 +177,8 @@ _DISHMADESERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=257,
-  serialized_end=370,
+  serialized_start=232,
+  serialized_end=345,
   methods=[
   _descriptor.MethodDescriptor(
     name='FindDishMades',

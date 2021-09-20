@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import pb.service_dish_made_pb2 as service__dish__made__pb2
+import service_dish_made_pb2 as service__dish__made__pb2
 
 
 class DishMadeServiceStub(object):

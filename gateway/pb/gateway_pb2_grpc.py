@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import pb.gateway_pb2 as gateway__pb2
+import gateway_pb2 as gateway__pb2
 
 
 class ServerStub(object):

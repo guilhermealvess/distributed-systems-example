@@ -12,3 +12,8 @@ services:
       MONGO_INITDB_DATABASE: services
     ports: 
     - 27017:27017
+
+  redis:
+    image: "redis:alpine"
+    ports:
+    - 6379:6379

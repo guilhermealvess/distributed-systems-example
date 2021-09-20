@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import pb.service_drink_pb2 as service__drink__pb2
+import service_drink_pb2 as service__drink__pb2
 
 
 class DrinkServiceStub(object):

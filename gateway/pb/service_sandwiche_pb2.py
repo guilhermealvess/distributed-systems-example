@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x17service-sandwiche.proto\x12\x10sandwicheService\"b\n\tSandwiche\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\x12\x17\n\x0fpreparationTime\x18\x04 \x01(\x03\x12\x13\n\x0bingredients\x18\x05 \x03(\t\"I\n\x16\x46indSandwichesResponse\x12/\n\nsandwiches\x18\x01 \x03(\x0b\x32\x1b.sandwicheService.Sandwiche\",\n\x15\x46indSandwichesRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\x32y\n\x10SandwicheService\x12\x65\n\x0e\x46indSandwiches\x12\'.sandwicheService.FindSandwichesRequest\x1a(.sandwicheService.FindSandwichesResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x17service-sandwiche.proto\x12\x10sandwicheService\"b\n\tSandwiche\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\x12\x17\n\x0fpreparationTime\x18\x04 \x01(\x03\x12\x13\n\x0bingredients\x18\x05 \x03(\t\"I\n\x16\x46indSandwichesResponse\x12/\n\nsandwiches\x18\x01 \x03(\x0b\x32\x1b.sandwicheService.Sandwiche\",\n\x15\x46indSandwichesRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\"\x1a\n\x0cOrderRequest\x12\n\n\x02id\x18\x01 \x03(\t\"7\n\rOrderResponse\x12\r\n\x05\x66oods\x18\x01 \x03(\t\x12\x17\n\x0fpreparationTime\x18\x02 \x01(\x03\x32\xca\x01\n\x10SandwicheService\x12\x65\n\x0e\x46indSandwiches\x12\'.sandwicheService.FindSandwichesRequest\x1a(.sandwicheService.FindSandwichesResponse\"\x00\x12O\n\x0c\x45xecuteOrder\x12\x1e.sandwicheService.OrderRequest\x1a\x1f.sandwicheService.OrderResponseb\x06proto3'
 )
 
 
@@ -148,10 +148,83 @@ _FINDSANDWICHESREQUEST = _descriptor.Descriptor(
   serialized_end=264,
 )
 
+
+_ORDERREQUEST = _descriptor.Descriptor(
+  name='OrderRequest',
+  full_name='sandwicheService.OrderRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='sandwicheService.OrderRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=266,
+  serialized_end=292,
+)
+
+
+_ORDERRESPONSE = _descriptor.Descriptor(
+  name='OrderResponse',
+  full_name='sandwicheService.OrderResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='foods', full_name='sandwicheService.OrderResponse.foods', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='preparationTime', full_name='sandwicheService.OrderResponse.preparationTime', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=294,
+  serialized_end=349,
+)
+
 _FINDSANDWICHESRESPONSE.fields_by_name['sandwiches'].message_type = _SANDWICHE
 DESCRIPTOR.message_types_by_name['Sandwiche'] = _SANDWICHE
 DESCRIPTOR.message_types_by_name['FindSandwichesResponse'] = _FINDSANDWICHESRESPONSE
 DESCRIPTOR.message_types_by_name['FindSandwichesRequest'] = _FINDSANDWICHESREQUEST
+DESCRIPTOR.message_types_by_name['OrderRequest'] = _ORDERREQUEST
+DESCRIPTOR.message_types_by_name['OrderResponse'] = _ORDERRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Sandwiche = _reflection.GeneratedProtocolMessageType('Sandwiche', (_message.Message,), {
@@ -175,6 +248,20 @@ FindSandwichesRequest = _reflection.GeneratedProtocolMessageType('FindSandwiches
   })
 _sym_db.RegisterMessage(FindSandwichesRequest)
 
+OrderRequest = _reflection.GeneratedProtocolMessageType('OrderRequest', (_message.Message,), {
+  'DESCRIPTOR' : _ORDERREQUEST,
+  '__module__' : 'service_sandwiche_pb2'
+  # @@protoc_insertion_point(class_scope:sandwicheService.OrderRequest)
+  })
+_sym_db.RegisterMessage(OrderRequest)
+
+OrderResponse = _reflection.GeneratedProtocolMessageType('OrderResponse', (_message.Message,), {
+  'DESCRIPTOR' : _ORDERRESPONSE,
+  '__module__' : 'service_sandwiche_pb2'
+  # @@protoc_insertion_point(class_scope:sandwicheService.OrderResponse)
+  })
+_sym_db.RegisterMessage(OrderResponse)
+
 
 
 _SANDWICHESERVICE = _descriptor.ServiceDescriptor(
@@ -184,8 +271,8 @@ _SANDWICHESERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=266,
-  serialized_end=387,
+  serialized_start=352,
+  serialized_end=554,
   methods=[
   _descriptor.MethodDescriptor(
     name='FindSandwiches',
@@ -194,6 +281,16 @@ _SANDWICHESERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_FINDSANDWICHESREQUEST,
     output_type=_FINDSANDWICHESRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ExecuteOrder',
+    full_name='sandwicheService.SandwicheService.ExecuteOrder',
+    index=1,
+    containing_service=None,
+    input_type=_ORDERREQUEST,
+    output_type=_ORDERRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

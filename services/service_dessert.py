@@ -10,7 +10,7 @@ from database.database import Database
 
 class DessertService:
     def findDesserts(self):
-        return Database().findAll('desserts')
+        return Database().findAll('dessert')
 
 
 class DessertServer(pb.service_dessert_pb2_grpc.DessertServiceServicer):

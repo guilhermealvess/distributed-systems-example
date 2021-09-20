@@ -1,5 +1,7 @@
 from pymongo import MongoClient
 
+from bson.objectid import ObjectId
+
 
 
 class Database:
@@ -16,7 +18,7 @@ class Database:
 
     def findById(self, collection, id):
         col = self.getCollection(collection)
-        return col.find_one({'_id': id})
+        return col.find_one({'_id': ObjectId(id)})
 
     def insertMany(self, collection, data: list):
         col = self.getCollection(collection)
