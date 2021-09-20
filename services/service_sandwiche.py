@@ -5,6 +5,7 @@ from concurrent import futures
 from database.database import Database
 import pb.service_sandwiche_pb2, pb.service_sandwiche_pb2_grpc
 
+
 class DepartmentSandwicheService:
     def __init__(self) -> None:
         pass
@@ -14,17 +15,16 @@ class DepartmentSandwicheService:
         return db.findAll('sandwiches')
 
 
-
 class SandwicheService(pb.service_sandwiche_pb2_grpc.SandwicheServiceServicer):
     def FindSandwiches(self, request, context):
         departmentSandwicheService = DepartmentSandwicheService()
         sandwiches = departmentSandwicheService.findSandwiches()
-        response = list(map(lambda x: pb.service_sandwiche_pb2.Sandwiche(
-            id=str(x['_id']),
-            name=x['name'],
-            price=x['price'],
-            preparationTime=x['preparationTime'],
-            ingredients=x['ingredients']
+        response = list(map(lambda s: pb.service_sandwiche_pb2.Sandwiche(
+            id=str(s['_id']),
+            name=s['name'],
+            price=s['price'],
+            preparationTime=s['preparationTime'],
+            ingredients=s['ingredients']
         ), sandwiches))
 
         return pb.service_sandwiche_pb2.FindSandwichesResponse(sandwiches=response)

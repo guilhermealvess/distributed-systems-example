@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package dishMadeService;
+
+message DishMade {
+    string id = 1;
+    string name = 2;
+    double price = 3;
+    int64 preparationTime = 4;
+    repeated string ingredients = 5;
+}
+
+message FindDishMadeResponse {
+    repeated DishMade dishMades = 1;
+}
+
+message FindDishMadeRequest {
+    int32 tableNumber = 1;
+}
+
+service DishMadeService {
+    rpc FindDishMades (FindDishMadeRequest) returns (FindDishMadeResponse) {}
+}

@@ -4,6 +4,8 @@ from concurrent import futures
 import pb.gateway_pb2, pb.gateway_pb2_grpc
 import pb.service_sandwiche_pb2, pb.service_sandwiche_pb2_grpc
 import pb.service_drink_pb2, pb.service_drink_pb2_grpc
+import pb.service_dish_made_pb2, pb.service_dish_made_pb2_grpc
+import pb.service_dessert_pb2, pb.service_dessert_pb2_grpc
 
 class Server(pb.gateway_pb2_grpc.ServerServicer):
     def GetMenu(self, request, context):
@@ -29,7 +31,29 @@ class Server(pb.gateway_pb2_grpc.ServerServicer):
                 price=d.price,
             ), list(drink.drinks)))
 
-        return pb.gateway_pb2.MenuResponse(sandwiches=sandwiches_response, dishMades=[], drinks=drinks_response, desserts=[])
+        with grpc.insecure_channel('localhost:5003') as channel:
+            stub = pb.service_dish_made_pb2_grpc.DishMadeServiceStub(channel)
+            findDishMadesRequest = pb.service_dish_made_pb2.FindDishMadeRequest(tableNumber=request.tableNumber)
+            dishMades = stub.FindDishMades(findDishMadesRequest)
+            dishMades_response = list(map(lambda d: pb.gateway_pb2.DishMade(
+                id=d.id,
+                name=d.name,
+                price=d.price,
+                preparationTime=d.preparationTime,
+                ingredients=d.ingredients
+            ), list(dishMades)))
+
+        with grpc.insecure_channel('localhost:5004') as channel:
+            stub = pb.service_dessert_pb2_grpc.DessertServiceStub(channel)
+            findDessertRequest = pb.service_dessert_pb2.FindDessertRequest(request.tableNumber)
+            desserts = stub.FindDesserts(findDessertRequest)
+            desserts_response = list(map(lambda d: pb.gateway_pb2.Dessert(
+                id=d.id,
+                name=d.name,
+                price=d.price
+            ), list(desserts)))
+
+        return pb.gateway_pb2.MenuResponse(sandwiches=sandwiches_response, dishMades=dishMades_response, drinks=drinks_response, desserts=desserts_response)
 
 
 def serve():
