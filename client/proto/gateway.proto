@@ -19,7 +19,8 @@ message Sandwiche {
     string id = 1;
     string name = 2;
     double price = 3;
-    repeated string ingredients = 4;
+    int64 preparationTime = 4;
+    repeated string ingredients = 5;
 }
 
 message DishMade {
@@ -47,9 +48,8 @@ message OrderRequest {
 }
 
 message OrderResponse {
-    double total = 1;
+    repeated string foods = 1;
     int64 preparationTime = 2;
-    repeated string foods = 3;
 }
 
 message CloseAccountRequest {

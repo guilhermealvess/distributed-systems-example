@@ -16,7 +16,7 @@ class Cache:
         self.cache = redis.Redis(host='0.0.0.0', port=6379)
 
     def setValue(self, key, data):
-        self.cache.set(json.dumps(data))
+        self.cache.set(key, json.dumps(data))
 
     def getValue(self, key):
         return json.loads(self.getValue(key))
@@ -78,6 +78,7 @@ class GatewayService:
     def createOrder(self, tableNumber, ids):
         foods = list()
         preparationTimeTotal = 0
+
         with grpc.insecure_channel(self.service_sandwiche) as channel:
             stub = pb.service_sandwiche_pb2_grpc.SandwicheServiceStub(channel)
             orderRequest = pb.service_sandwiche_pb2.OrderRequest(id=ids)
@@ -85,7 +86,29 @@ class GatewayService:
             preparationTimeTotal += response.preparationTime
             foods += response.foods
 
-        Cache.setValue(str(tableNumber), json.loads(ids))
+        with grpc.insecure_channel(self.service_drink) as channel:
+            stub = pb.service_drink_pb2_grpc.DrinkServiceStub(channel)
+            orderRequest = pb.service_drink_pb2.OrderRequest(id=ids)
+            response = stub.ExecuteOrder(orderRequest)
+            preparationTimeTotal += response.preparationTime
+            foods += response.foods
+
+        with grpc.insecure_channel(self.service_dish_made) as channel:
+            stub = pb.service_dish_made_pb2_grpc.DishMadeServiceStub(channel)
+            orderRequest = pb.service_dish_made_pb2.OrderRequest(id=ids)
+            response = stub.ExecuteOrder(orderRequest)
+            preparationTimeTotal += response.preparationTime
+            foods += response.foods
+
+        with grpc.insecure_channel(self.service_dessert) as channel:
+            stub = pb.service_dessert_pb2_grpc.DessertServiceStub(channel)
+            orderRequest = pb.service_dessert_pb2.OrderRequest(id=ids)
+            response = stub.ExecuteOrder(orderRequest)
+            preparationTimeTotal += response.preparationTime
+            foods += response.foods
+
+        key = str(tableNumber)
+        Cache().setValue(key, list(ids))
 
         return pb.gateway_pb2.OrderResponse(foods=foods, preparationTime=preparationTimeTotal)
             

@@ -16,6 +16,19 @@ message FindDrinksRequest {
     int32 tableNumber = 1;
 }
 
+message OrderRequest {
+    repeated string id = 1;
+    int32 tableNumber = 2;
+}
+
+message OrderResponse {
+    repeated string foods = 1;
+    int64 preparationTime = 2;
+}
+
+
 service DrinkService {
     rpc FindDrinks (FindDrinksRequest) returns (FindDrinksResponse) {}
+
+    rpc ExecuteOrder (OrderRequest) returns (OrderResponse) {};
 }

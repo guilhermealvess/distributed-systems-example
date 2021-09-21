@@ -1,4 +1,4 @@
-import time
+import time, random
 from concurrent import futures
 
 import grpc
@@ -22,6 +22,19 @@ class DessertServer(pb.service_dessert_pb2_grpc.DessertServiceServicer):
             price=d['price']
         ), desserts))
         return pb.service_dessert_pb2.FindDessertResponse(desserts=response)
+
+    def ExecuteOrder(self, request, context):
+        foods = list()
+        preparationTimeTotal = 0
+        for id in request.id:
+            dishMade = DessertService().findDesserts(id)
+            if dishMade:
+                preparationTime = dishMade.get('preparationTime', random.randint(20,120))
+                time.sleep(preparationTime/10)
+                foods.append(dishMade['name'])
+                preparationTimeTotal += preparationTime
+
+        return pb.service_dessert_pb2.OrderResponse(foods=foods, preparationTime=preparationTimeTotal)
 
 
 def serve():

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x15service-dessert.proto\x12\x0e\x64\x65ssertService\"2\n\x07\x44\x65ssert\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\"@\n\x13\x46indDessertResponse\x12)\n\x08\x64\x65sserts\x18\x01 \x03(\x0b\x32\x17.dessertService.Dessert\")\n\x12\x46indDessertRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\x32k\n\x0e\x44\x65ssertService\x12Y\n\x0c\x46indDesserts\x12\".dessertService.FindDessertRequest\x1a#.dessertService.FindDessertResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x15service-dessert.proto\x12\x0e\x64\x65ssertService\"2\n\x07\x44\x65ssert\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\"@\n\x13\x46indDessertResponse\x12)\n\x08\x64\x65sserts\x18\x01 \x03(\x0b\x32\x17.dessertService.Dessert\")\n\x12\x46indDessertRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\"/\n\x0cOrderRequest\x12\n\n\x02id\x18\x01 \x03(\t\x12\x13\n\x0btableNumber\x18\x02 \x01(\x05\"7\n\rOrderResponse\x12\r\n\x05\x66oods\x18\x01 \x03(\t\x12\x17\n\x0fpreparationTime\x18\x02 \x01(\x03\x32\xba\x01\n\x0e\x44\x65ssertService\x12Y\n\x0c\x46indDesserts\x12\".dessertService.FindDessertRequest\x1a#.dessertService.FindDessertResponse\"\x00\x12M\n\x0c\x45xecuteOrder\x12\x1c.dessertService.OrderRequest\x1a\x1d.dessertService.OrderResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -134,10 +134,90 @@ _FINDDESSERTREQUEST = _descriptor.Descriptor(
   serialized_end=200,
 )
 
+
+_ORDERREQUEST = _descriptor.Descriptor(
+  name='OrderRequest',
+  full_name='dessertService.OrderRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='dessertService.OrderRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='tableNumber', full_name='dessertService.OrderRequest.tableNumber', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=202,
+  serialized_end=249,
+)
+
+
+_ORDERRESPONSE = _descriptor.Descriptor(
+  name='OrderResponse',
+  full_name='dessertService.OrderResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='foods', full_name='dessertService.OrderResponse.foods', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='preparationTime', full_name='dessertService.OrderResponse.preparationTime', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=251,
+  serialized_end=306,
+)
+
 _FINDDESSERTRESPONSE.fields_by_name['desserts'].message_type = _DESSERT
 DESCRIPTOR.message_types_by_name['Dessert'] = _DESSERT
 DESCRIPTOR.message_types_by_name['FindDessertResponse'] = _FINDDESSERTRESPONSE
 DESCRIPTOR.message_types_by_name['FindDessertRequest'] = _FINDDESSERTREQUEST
+DESCRIPTOR.message_types_by_name['OrderRequest'] = _ORDERREQUEST
+DESCRIPTOR.message_types_by_name['OrderResponse'] = _ORDERRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Dessert = _reflection.GeneratedProtocolMessageType('Dessert', (_message.Message,), {
@@ -161,6 +241,20 @@ FindDessertRequest = _reflection.GeneratedProtocolMessageType('FindDessertReques
   })
 _sym_db.RegisterMessage(FindDessertRequest)
 
+OrderRequest = _reflection.GeneratedProtocolMessageType('OrderRequest', (_message.Message,), {
+  'DESCRIPTOR' : _ORDERREQUEST,
+  '__module__' : 'service_dessert_pb2'
+  # @@protoc_insertion_point(class_scope:dessertService.OrderRequest)
+  })
+_sym_db.RegisterMessage(OrderRequest)
+
+OrderResponse = _reflection.GeneratedProtocolMessageType('OrderResponse', (_message.Message,), {
+  'DESCRIPTOR' : _ORDERRESPONSE,
+  '__module__' : 'service_dessert_pb2'
+  # @@protoc_insertion_point(class_scope:dessertService.OrderResponse)
+  })
+_sym_db.RegisterMessage(OrderResponse)
+
 
 
 _DESSERTSERVICE = _descriptor.ServiceDescriptor(
@@ -170,8 +264,8 @@ _DESSERTSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=202,
-  serialized_end=309,
+  serialized_start=309,
+  serialized_end=495,
   methods=[
   _descriptor.MethodDescriptor(
     name='FindDesserts',
@@ -180,6 +274,16 @@ _DESSERTSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_FINDDESSERTREQUEST,
     output_type=_FINDDESSERTRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ExecuteOrder',
+    full_name='dessertService.DessertService.ExecuteOrder',
+    index=1,
+    containing_service=None,
+    input_type=_ORDERREQUEST,
+    output_type=_ORDERRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

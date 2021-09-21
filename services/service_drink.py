@@ -23,6 +23,19 @@ class DrinkServiceGRPC(pb.service_drink_pb2_grpc.DrinkServiceServicer):
 
         return pb.service_drink_pb2.FindDrinksResponse(drinks=res)
 
+    def ExecuteOrder(self, request, context):
+        foods = list()
+        preparationTimeTotal = 0
+        for id in request.id:
+            drink = DepartmentDrinkService().findDrinks(id)
+            if drink:
+                preparationTime = 10
+                time.sleep(preparationTime/10)
+                foods.append(drink['name'])
+                preparationTimeTotal += preparationTime
+
+        return pb.service_drink_pb2.OrderResponse(foods=foods, preparationTime=preparationTimeTotal)
+
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

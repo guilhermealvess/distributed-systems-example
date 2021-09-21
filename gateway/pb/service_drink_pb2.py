@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x13service-drink.proto\x12\x0c\x64rinkService\"0\n\x05\x44rink\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\"9\n\x12\x46indDrinksResponse\x12#\n\x06\x64rinks\x18\x01 \x03(\x0b\x32\x13.drinkService.Drink\"(\n\x11\x46indDrinksRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\x32\x61\n\x0c\x44rinkService\x12Q\n\nFindDrinks\x12\x1f.drinkService.FindDrinksRequest\x1a .drinkService.FindDrinksResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x13service-drink.proto\x12\x0c\x64rinkService\"0\n\x05\x44rink\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\"9\n\x12\x46indDrinksResponse\x12#\n\x06\x64rinks\x18\x01 \x03(\x0b\x32\x13.drinkService.Drink\"(\n\x11\x46indDrinksRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\"/\n\x0cOrderRequest\x12\n\n\x02id\x18\x01 \x03(\t\x12\x13\n\x0btableNumber\x18\x02 \x01(\x05\"7\n\rOrderResponse\x12\r\n\x05\x66oods\x18\x01 \x03(\t\x12\x17\n\x0fpreparationTime\x18\x02 \x01(\x03\x32\xac\x01\n\x0c\x44rinkService\x12Q\n\nFindDrinks\x12\x1f.drinkService.FindDrinksRequest\x1a .drinkService.FindDrinksResponse\"\x00\x12I\n\x0c\x45xecuteOrder\x12\x1a.drinkService.OrderRequest\x1a\x1b.drinkService.OrderResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -134,10 +134,90 @@ _FINDDRINKSREQUEST = _descriptor.Descriptor(
   serialized_end=186,
 )
 
+
+_ORDERREQUEST = _descriptor.Descriptor(
+  name='OrderRequest',
+  full_name='drinkService.OrderRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='drinkService.OrderRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='tableNumber', full_name='drinkService.OrderRequest.tableNumber', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=188,
+  serialized_end=235,
+)
+
+
+_ORDERRESPONSE = _descriptor.Descriptor(
+  name='OrderResponse',
+  full_name='drinkService.OrderResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='foods', full_name='drinkService.OrderResponse.foods', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='preparationTime', full_name='drinkService.OrderResponse.preparationTime', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=237,
+  serialized_end=292,
+)
+
 _FINDDRINKSRESPONSE.fields_by_name['drinks'].message_type = _DRINK
 DESCRIPTOR.message_types_by_name['Drink'] = _DRINK
 DESCRIPTOR.message_types_by_name['FindDrinksResponse'] = _FINDDRINKSRESPONSE
 DESCRIPTOR.message_types_by_name['FindDrinksRequest'] = _FINDDRINKSREQUEST
+DESCRIPTOR.message_types_by_name['OrderRequest'] = _ORDERREQUEST
+DESCRIPTOR.message_types_by_name['OrderResponse'] = _ORDERRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Drink = _reflection.GeneratedProtocolMessageType('Drink', (_message.Message,), {
@@ -161,6 +241,20 @@ FindDrinksRequest = _reflection.GeneratedProtocolMessageType('FindDrinksRequest'
   })
 _sym_db.RegisterMessage(FindDrinksRequest)
 
+OrderRequest = _reflection.GeneratedProtocolMessageType('OrderRequest', (_message.Message,), {
+  'DESCRIPTOR' : _ORDERREQUEST,
+  '__module__' : 'service_drink_pb2'
+  # @@protoc_insertion_point(class_scope:drinkService.OrderRequest)
+  })
+_sym_db.RegisterMessage(OrderRequest)
+
+OrderResponse = _reflection.GeneratedProtocolMessageType('OrderResponse', (_message.Message,), {
+  'DESCRIPTOR' : _ORDERRESPONSE,
+  '__module__' : 'service_drink_pb2'
+  # @@protoc_insertion_point(class_scope:drinkService.OrderResponse)
+  })
+_sym_db.RegisterMessage(OrderResponse)
+
 
 
 _DRINKSERVICE = _descriptor.ServiceDescriptor(
@@ -170,8 +264,8 @@ _DRINKSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=188,
-  serialized_end=285,
+  serialized_start=295,
+  serialized_end=467,
   methods=[
   _descriptor.MethodDescriptor(
     name='FindDrinks',
@@ -180,6 +274,16 @@ _DRINKSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_FINDDRINKSREQUEST,
     output_type=_FINDDRINKSRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ExecuteOrder',
+    full_name='drinkService.DrinkService.ExecuteOrder',
+    index=1,
+    containing_service=None,
+    input_type=_ORDERREQUEST,
+    output_type=_ORDERRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x17service-dish-made.proto\x12\x0f\x64ishMadeService\"H\n\x08\x44ishMade\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\x12\x13\n\x0bingredients\x18\x04 \x03(\t\"D\n\x14\x46indDishMadeResponse\x12,\n\tdishMades\x18\x01 \x03(\x0b\x32\x19.dishMadeService.DishMade\"*\n\x13\x46indDishMadeRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\x32q\n\x0f\x44ishMadeService\x12^\n\rFindDishMades\x12$.dishMadeService.FindDishMadeRequest\x1a%.dishMadeService.FindDishMadeResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x17service-dish-made.proto\x12\x0f\x64ishMadeService\"H\n\x08\x44ishMade\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x01\x12\x13\n\x0bingredients\x18\x04 \x03(\t\"D\n\x14\x46indDishMadeResponse\x12,\n\tdishMades\x18\x01 \x03(\x0b\x32\x19.dishMadeService.DishMade\"*\n\x13\x46indDishMadeRequest\x12\x13\n\x0btableNumber\x18\x01 \x01(\x05\"/\n\x0cOrderRequest\x12\n\n\x02id\x18\x01 \x03(\t\x12\x13\n\x0btableNumber\x18\x02 \x01(\x05\"7\n\rOrderResponse\x12\r\n\x05\x66oods\x18\x01 \x03(\t\x12\x17\n\x0fpreparationTime\x18\x02 \x01(\x03\x32\xc2\x01\n\x0f\x44ishMadeService\x12^\n\rFindDishMades\x12$.dishMadeService.FindDishMadeRequest\x1a%.dishMadeService.FindDishMadeResponse\"\x00\x12O\n\x0c\x45xecuteOrder\x12\x1d.dishMadeService.OrderRequest\x1a\x1e.dishMadeService.OrderResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -141,10 +141,90 @@ _FINDDISHMADEREQUEST = _descriptor.Descriptor(
   serialized_end=230,
 )
 
+
+_ORDERREQUEST = _descriptor.Descriptor(
+  name='OrderRequest',
+  full_name='dishMadeService.OrderRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='dishMadeService.OrderRequest.id', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='tableNumber', full_name='dishMadeService.OrderRequest.tableNumber', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=232,
+  serialized_end=279,
+)
+
+
+_ORDERRESPONSE = _descriptor.Descriptor(
+  name='OrderResponse',
+  full_name='dishMadeService.OrderResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='foods', full_name='dishMadeService.OrderResponse.foods', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='preparationTime', full_name='dishMadeService.OrderResponse.preparationTime', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=281,
+  serialized_end=336,
+)
+
 _FINDDISHMADERESPONSE.fields_by_name['dishMades'].message_type = _DISHMADE
 DESCRIPTOR.message_types_by_name['DishMade'] = _DISHMADE
 DESCRIPTOR.message_types_by_name['FindDishMadeResponse'] = _FINDDISHMADERESPONSE
 DESCRIPTOR.message_types_by_name['FindDishMadeRequest'] = _FINDDISHMADEREQUEST
+DESCRIPTOR.message_types_by_name['OrderRequest'] = _ORDERREQUEST
+DESCRIPTOR.message_types_by_name['OrderResponse'] = _ORDERRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 DishMade = _reflection.GeneratedProtocolMessageType('DishMade', (_message.Message,), {
@@ -168,6 +248,20 @@ FindDishMadeRequest = _reflection.GeneratedProtocolMessageType('FindDishMadeRequ
   })
 _sym_db.RegisterMessage(FindDishMadeRequest)
 
+OrderRequest = _reflection.GeneratedProtocolMessageType('OrderRequest', (_message.Message,), {
+  'DESCRIPTOR' : _ORDERREQUEST,
+  '__module__' : 'service_dish_made_pb2'
+  # @@protoc_insertion_point(class_scope:dishMadeService.OrderRequest)
+  })
+_sym_db.RegisterMessage(OrderRequest)
+
+OrderResponse = _reflection.GeneratedProtocolMessageType('OrderResponse', (_message.Message,), {
+  'DESCRIPTOR' : _ORDERRESPONSE,
+  '__module__' : 'service_dish_made_pb2'
+  # @@protoc_insertion_point(class_scope:dishMadeService.OrderResponse)
+  })
+_sym_db.RegisterMessage(OrderResponse)
+
 
 
 _DISHMADESERVICE = _descriptor.ServiceDescriptor(
@@ -177,8 +271,8 @@ _DISHMADESERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=232,
-  serialized_end=345,
+  serialized_start=339,
+  serialized_end=533,
   methods=[
   _descriptor.MethodDescriptor(
     name='FindDishMades',
@@ -187,6 +281,16 @@ _DISHMADESERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_FINDDISHMADEREQUEST,
     output_type=_FINDDISHMADERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ExecuteOrder',
+    full_name='dishMadeService.DishMadeService.ExecuteOrder',
+    index=1,
+    containing_service=None,
+    input_type=_ORDERREQUEST,
+    output_type=_ORDERRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
