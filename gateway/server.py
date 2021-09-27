@@ -1,9 +1,12 @@
+import functools, operator
 import grpc
 from concurrent import futures
 import json
+from pymongo import collation
 
 import redis
 
+from database.database import Database
 import pb.gateway_pb2, pb.gateway_pb2_grpc
 import pb.service_sandwiche_pb2, pb.service_sandwiche_pb2_grpc
 import pb.service_drink_pb2, pb.service_drink_pb2_grpc
@@ -14,12 +17,12 @@ import pb.service_dessert_pb2, pb.service_dessert_pb2_grpc
 class Cache:
     def __init__(self) -> None:
         self.cache = redis.Redis(host='0.0.0.0', port=6379)
-
     def setValue(self, key, data):
         self.cache.set(key, json.dumps(data))
-
     def getValue(self, key):
-        return json.loads(self.getValue(key))
+        return self.cache.get(key)
+    def delete(self, key):
+        self.cache.delete(key)
 
 
 class GatewayService:
@@ -111,7 +114,23 @@ class GatewayService:
         Cache().setValue(key, list(ids))
 
         return pb.gateway_pb2.OrderResponse(foods=foods, preparationTime=preparationTimeTotal)
-            
+
+    def closeAccount(self, tableNumber):
+        _collections = ['sandwiches', 'drinks', 'dishMade', 'dessert']
+        data = Cache().getValue(str(tableNumber))
+        prices = list()
+        if data:
+            for id in data:
+                for col in _collections:
+                    doc = Database().findById(col, id)
+                    if doc:
+                        prices.append(doc.get('price'))
+                        break
+            total = functools.reduce(operator.add, prices)
+        else:
+            total = 0
+        Cache().delete(str(tableNumber))
+        return pb.gateway_pb2.CloseAccountResponse(total=total)
 
 class Server(pb.gateway_pb2_grpc.ServerServicer):
     def GetMenu(self, request, context):
@@ -119,6 +138,9 @@ class Server(pb.gateway_pb2_grpc.ServerServicer):
 
     def CreateOrder(self, request, context):
         return GatewayService().createOrder(request.tableNumber, request.id)
+
+    def CloseAccount(self, request, context):
+        return GatewayService().closeAccount(request.tableNumber)
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

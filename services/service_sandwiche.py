@@ -14,7 +14,7 @@ class DepartmentSandwicheService:
         db = Database()
         return db.findAll(self.collectionDb)
 
-    def findSandwiche(self, id):
+    def findSandwicheByid(self, id):
         return Database().findById(self.collectionDb, id)
 
 
@@ -36,12 +36,13 @@ class SandwicheService(pb.service_sandwiche_pb2_grpc.SandwicheServiceServicer):
         foods = list()
         preparationTimeTotal = 0
         for id in request.id:
-            sandwiche = DepartmentSandwicheService().findSandwiche(id)
+            sandwiche = DepartmentSandwicheService().findSandwicheByid(id)
             if sandwiche:
                 preparationTime = sandwiche.get('preparationTime', random.randint(20,120))
-                time.sleep(preparationTime/10)
+                time.sleep(preparationTime/20)
                 foods.append(sandwiche['name'])
                 preparationTimeTotal += preparationTime
+        print(foods)
 
         return pb.service_sandwiche_pb2.OrderResponse(foods=foods, preparationTime=preparationTimeTotal)
 

@@ -16,11 +16,19 @@ import pb.gateway_pb2, pb.gateway_pb2_grpc
 with grpc.insecure_channel('localhost:5000') as channel:
     stub = pb.gateway_pb2_grpc.ServerStub(channel)
     request = pb.gateway_pb2.OrderRequest(id=[
-        "61491d8ec4787a66624569d0",
-        "61491d8ec4787a66624569d7",
-        "61491d8ec4787a66624569dc",
-        "61491d8ec4787a66624569d8",
-        "61491d8ec4787a66624569e4"], tableNumber=2)
+        "614f792b837ceb4deaafcbe8",                     #Sandwiches
+        "614f792b837ceb4deaafcbe9",                     #Sandwiches
+        "614f792b837ceb4deaafcbf5",                     #drink
+        "614f792b837ceb4deaafcbfd",                     #dessert
+        "614f792b837ceb4deaafcbfe"                      #dessert
+        ], tableNumber=2)
     response = stub.CreateOrder(request)
+    json_obj = json.loads(MessageToJson(response))
+    pprint(json_obj)
+
+with grpc.insecure_channel('localhost:5000') as channel:
+    stub = pb.gateway_pb2_grpc.ServerStub(channel)
+    request = pb.gateway_pb2.CloseAccountRequest(tableNumber=2)
+    response = stub.CloseAccount(request)
     json_obj = json.loads(MessageToJson(response))
     pprint(json_obj)

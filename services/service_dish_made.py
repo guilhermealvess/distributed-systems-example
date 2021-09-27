@@ -8,13 +8,19 @@ from database.database import Database
 
 
 class DishMadeService:
-    def findDishMade(self):
-        return Database().findAll('dishMade')
+    def __init__(self) -> None:
+        self.collectionDb = 'dishMade'
+
+    def findDishMades(self):
+        return Database().findAll(self.collectionDb)
+
+    def findDishMadeBy(self, id):
+        return Database().findById(self.collectionDb, id)
 
 
 class DishMadeServer(pb.service_dish_made_pb2_grpc.DishMadeServiceServicer):
     def FindDishMades(self, request, context):
-        dishMades = DishMadeService().findDishMade()
+        dishMades = DishMadeService().findDishMades()
         print(dishMades)
         response = list(map(lambda d: pb.service_dish_made_pb2.DishMade(
             id=str(d['_id']),
@@ -28,7 +34,7 @@ class DishMadeServer(pb.service_dish_made_pb2_grpc.DishMadeServiceServicer):
         foods = list()
         preparationTimeTotal = 0
         for id in request.id:
-            dishMade = DishMadeService().findDishMade(id)
+            dishMade = DishMadeService().findDishMadeBy(id)
             if dishMade:
                 preparationTime = dishMade.get('preparationTime', random.randint(20,120))
                 time.sleep(preparationTime/10)

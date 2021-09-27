@@ -7,9 +7,16 @@ import pb.service_drink_pb2, pb.service_drink_pb2_grpc
 
 
 class DepartmentDrinkService:
+
+    def __init__(self) -> None:
+        self.collectionDb = 'drinks'
+
     def findDrinks(self):
         db = Database()
-        return db.findAll('drinks')
+        return db.findAll(self.collectionDb)
+
+    def findDrinkByid(self, id):
+        return Database().findById(self.collectionDb, id)
 
 
 class DrinkServiceGRPC(pb.service_drink_pb2_grpc.DrinkServiceServicer):
@@ -27,13 +34,13 @@ class DrinkServiceGRPC(pb.service_drink_pb2_grpc.DrinkServiceServicer):
         foods = list()
         preparationTimeTotal = 0
         for id in request.id:
-            drink = DepartmentDrinkService().findDrinks(id)
+            drink = DepartmentDrinkService().findDrinkByid(id)
             if drink:
                 preparationTime = 10
                 time.sleep(preparationTime/10)
                 foods.append(drink['name'])
                 preparationTimeTotal += preparationTime
-
+        print(foods)
         return pb.service_drink_pb2.OrderResponse(foods=foods, preparationTime=preparationTimeTotal)
 
 

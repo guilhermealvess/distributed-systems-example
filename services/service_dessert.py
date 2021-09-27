@@ -2,15 +2,20 @@ import time, random
 from concurrent import futures
 
 import grpc
-from pymongo import response
 
 import pb.service_dessert_pb2, pb.service_dessert_pb2_grpc
 from database.database import Database
 
 
 class DessertService:
+    def __init__(self) -> None:
+        self.collectionDb = 'dessert'
+
     def findDesserts(self):
-        return Database().findAll('dessert')
+        return Database().findAll(self.collectionDb)
+
+    def findDessertById(self, id):
+        return Database().findById(self.collectionDb, id)
 
 
 class DessertServer(pb.service_dessert_pb2_grpc.DessertServiceServicer):
@@ -27,13 +32,13 @@ class DessertServer(pb.service_dessert_pb2_grpc.DessertServiceServicer):
         foods = list()
         preparationTimeTotal = 0
         for id in request.id:
-            dishMade = DessertService().findDesserts(id)
-            if dishMade:
-                preparationTime = dishMade.get('preparationTime', random.randint(20,120))
+            dessert = DessertService().findDessertById(id)
+            if dessert:
+                preparationTime = dessert.get('preparationTime', random.randint(20,120))
                 time.sleep(preparationTime/10)
-                foods.append(dishMade['name'])
+                foods.append(dessert['name'])
                 preparationTimeTotal += preparationTime
-
+        print(foods)
         return pb.service_dessert_pb2.OrderResponse(foods=foods, preparationTime=preparationTimeTotal)
 
 
