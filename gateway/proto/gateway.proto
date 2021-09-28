@@ -57,7 +57,7 @@ message CloseAccountRequest {
 }
 
 message CloseAccountResponse {
-    int32 total = 1;
+    double total = 1;
 }
 
 service Server {

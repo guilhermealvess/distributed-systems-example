@@ -1,12 +1,44 @@
 from random import randint
+import json
+
+from pyfiglet import figlet_format
 import grpc
 from google.protobuf.json_format import MessageToJson
-import json
 
 import pb.gateway_pb2, pb.gateway_pb2_grpc
 
 
-table_number = randint(1, 10)
+class GatewayService:
+    def __init__(self, tableNumber) -> None:
+        self.tableNumber = tableNumber
+
+    def getMenu(self) -> dict:
+        with grpc.insecure_channel('localhost:5000') as channel:
+            stub = pb.gateway_pb2_grpc.ServerStub(channel)
+            request = pb.gateway_pb2.MenuRequest(tableNumber=self.tableNumber)
+            response = stub.GetMenu(request)
+            return json.loads(MessageToJson(response))
+
+    def createOrder(self, items) -> dict:
+        with grpc.insecure_channel('localhost:5000') as channel:
+            stub = pb.gateway_pb2_grpc.ServerStub(channel)
+            request = pb.gateway_pb2.OrderRequest(id=items, tableNumber=self.tableNumber)
+            response = stub.CreateOrder(request)
+            return json.loads(MessageToJson(response))
+
+    def closeAccount(self) -> dict:
+        with grpc.insecure_channel('localhost:5000') as channel:
+            stub = pb.gateway_pb2_grpc.ServerStub(channel)
+            request = pb.gateway_pb2.CloseAccountRequest(tableNumber=self.tableNumber)
+            response = stub.CloseAccount(request)
+            return json.loads(MessageToJson(response))
+
+# Inciando variáveis globais
+
+table_number = randint(1, 100)
+
+service = GatewayService(table_number)
+
 CATEGORY = {
     'sandwiches': 'SANDUICHES',
     'dishMades': 'PRATOS FEITOS',
@@ -14,13 +46,14 @@ CATEGORY = {
     'desserts': 'SOBREMESAS'
 }
 
-print('Seja Bem vindo ao restaurante FOOD BAR!\nEstá é a mesa ' + str(table_number) + '\n')
+def showFiglet(phrase):
+    print(figlet_format(phrase, font='starwars'))
 
 def show_options():
     while True:
-        print('Selecione uma opção válida!')
+        print('Selecione uma opção válida!\n')
 
-        print('DIGITE O NUMERO CORRESPONDENTE A OPÇÃO DESEJADA\n')
+        print('************* DIGITE O NUMERO CORRESPONDENTE A OPÇÃO DESEJADA *************\n')
 
         print('[ 1 ] Realizar um pedido ')
         print('[ 2 ] Pedir a conta \n')
@@ -28,7 +61,7 @@ def show_options():
         if IN == '1' or IN == '2':
             return int(IN)
 
-        print('OPÇÃO INVALIDA!\n')
+        print('************* OPÇÃO INVALIDA! *************\n')
 
 def converter_to_price_str(price:float):
     price_str_split = str(price).split('.')
@@ -59,7 +92,8 @@ def selected_items_from_menu(menu:dict):
                 else:
                     print('\n')
 
-    print('\n[ OK ]\n')
+    print('\nDIGITE [ OK ] PARA ENVIAR O PEDIDO\n')
+
     while True:
         cod_input = input()
         try:
@@ -72,35 +106,72 @@ def selected_items_from_menu(menu:dict):
         except:
             print('\nOpção inválida\n')
 
-def get_menu():
-    #Mock
-    """ return {
-        "sandwiches": [
-            {
-                "id": "123",
-                "name": "X-Salada",
-                "price": 26.55,
-                "ingredients": ["Tomate", "pão", "alface"]
-            }
-        ],
-        "dishMade": [],
-        "drinks": [],
-        "dessert": []
-    } """
-    with grpc.insecure_channel('localhost:5000') as channel:
-        stub = pb.gateway_pb2_grpc.ServerStub(channel)
-        request = pb.gateway_pb2.MenuRequest(tableNumber = table_number)
-        response = stub.GetMenu(request)
-        json_obj = json.loads(MessageToJson(response))
-        return json_obj
+def get_menu():    
+    return service.getMenu()
 
-while True:
+def create_order(items):
+    return service.createOrder(items)
 
-    option = show_options()
-    if option == 1:
+def close_account():
+    return service.closeAccount()
+
+def show_total_account(total):
+    print('****** TOTAL ******')
+    showFiglet('R$ {}'.format(total))
+
+def show_order_done(order) -> None:
+    t = int(order.get('preparationTime'))
+    for food in order.get('foods'):
+        print(' ####### ' + food.upper() + '#######')
+    print('\nTEMPO TOTAL: {} min: {} seg\n'.format(t//60, t%60))
+
+def selected_otpions():
+    while True:
+        print('Selecione uma opção válida!\n')
+
+        print('************* DIGITE O NUMERO CORRESPONDENTE A OPÇÃO DESEJADA *************\n')
+
+        print('[ 1 ] Pedir a conta ')
+        print('[ 2 ] Pedir novamente\n')
+        opt = input()
+        if opt == '1' or opt == '2':
+            return int(opt)
+
+        print('************* OPÇÃO INVALIDA! *************\n')
+
+
+def startAttendance():
+    import time
+    time.sleep(1)
+    while True:
+
+        """ option = show_options()
+        if option == 1:
+            while True: """
+
         menu = get_menu()
         items = selected_items_from_menu(menu)
+        print('\nPreparando pedido ...\n')
+        order = create_order(items)
+        show_order_done(order)
+        opt = selected_otpions()
 
-        print('\nPreparaando pedido ...\n')
+        if opt == 1 :
+            total = close_account()
+
+            show_total_account(total['total'])
+            break
+
+        
+        
+            
+
 
 # print('[ 1 ] X-Salada - R$29,35\nPÃO, alface, tomate')
+
+
+if __name__ == '__main__':
+    showFiglet('FOOD BAR')
+    print('Seja Bem vindo ao restaurante FOOD BAR!\nEstá é a mesa ' + str(table_number) + '\n')
+    
+    startAttendance()

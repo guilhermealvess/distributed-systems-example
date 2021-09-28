@@ -111,13 +111,19 @@ class GatewayService:
             foods += response.foods
 
         key = str(tableNumber)
-        Cache().setValue(key, list(ids))
+        data = Cache().getValue(tableNumber)
+        ids = list(ids)
+        if data:
+            ids = ids + json.loads(data)
+
+        Cache().setValue(key, ids)
 
         return pb.gateway_pb2.OrderResponse(foods=foods, preparationTime=preparationTimeTotal)
 
     def closeAccount(self, tableNumber):
         _collections = ['sandwiches', 'drinks', 'dishMade', 'dessert']
         data = Cache().getValue(str(tableNumber))
+        data = json.loads(data)
         prices = list()
         if data:
             for id in data:
